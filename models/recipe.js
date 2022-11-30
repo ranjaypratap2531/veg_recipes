@@ -1,26 +1,18 @@
 const mongoose = require('mongoose')
 
-const RecipeSchema = new mongoose.Schema({
-    title: {
+const recipeSchema = new mongoose.Schema({
+    title: String,
+    description: String,
+    imagePath: {
         type: String,
         required: true
+
     },
-    desc: {
-        type: String,
-        required: true
-    },
-    imgagePath: {
-        type: String,
-        required: true
-    },
+    content: String,
     category: {
         type: String,
         enum: ['Breakfast', 'Curry', 'Lunch', 'Snacks', 'Rice', 'Paneer', 'Vegitables', 'Indian Sweets', 'Street Food'],
         required: 'this field is required',
-    },
-    content:{
-        type: String,
-        required: true
     },
     createdAt: {
         type: Date,
@@ -28,5 +20,7 @@ const RecipeSchema = new mongoose.Schema({
     }
 })
 
-const Recipe = mongoose.model('Recipe', RecipeSchema)
+const Recipe = mongoose.model('Recipe', recipeSchema)
+
+
 module.exports = Recipe
